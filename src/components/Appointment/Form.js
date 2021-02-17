@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import InterviewerList from "../InterviewerList";
 import Button from "../Button";
 
-const reset = (setName, setInterviewer) => {
-  setName(() => "");
-  setInterviewer(() => null);
-};
-
-const cancel = (setName, setInterviewer, props) => {
-  reset(setName, setInterviewer);
-  return props.onCancel();
-}
-
 const Form = (props) => {
 
   const [name, setName] = useState(props.name || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
+
+  const reset = () => {
+    setName(() => "");
+    setInterviewer(() => null);
+  };
+  
+  const cancel = () => {
+    reset(setName, setInterviewer);
+    return props.onCancel();
+  }
 
   return (
     <main className="appointment__card appointment__card--create">
@@ -33,7 +33,7 @@ const Form = (props) => {
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button danger onClick={() => cancel(setName, setInterviewer, props)}>Cancel</Button>
+          <Button danger onClick={cancel}>Cancel</Button>
           <Button confirm onClick={() => props.onSave(name, interviewer)}>Save</Button>
         </section>
       </section>
