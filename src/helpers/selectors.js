@@ -17,6 +17,25 @@ export function getAppointmentsForDay(state, day) {
 
 };
 
+export function getInterviewersForDay(state, day) {
+
+  const output = [];
+  const selectedDay = state.days.filter(i => i.name === day);
+  if (selectedDay.length === 0) {
+    return output;
+  }
+
+  const interviewerIDs = selectedDay[0].interviewers;
+  const interviewers = state.interviewers;
+
+  for (const interviewerID of interviewerIDs) {
+    output.push(interviewers[interviewerID]);
+  }
+
+  return output;
+
+};
+
 export function getInterview(state, interview) {
 
   if (interview) {
