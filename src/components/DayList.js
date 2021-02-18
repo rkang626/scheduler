@@ -20,7 +20,7 @@ function CreateDayList(props) {
 export default function DayList(props) {
   return (
     <ul>
-      {CreateDayList(props)};
+      {CreateDayList(props)}
     </ul>
   );
 }

@@ -15,7 +15,7 @@ const Form = (props) => {
   const cancel = () => {
     reset(setName, setInterviewer);
     return props.onCancel();
-  }
+  };
 
   return (
     <main className="appointment__card appointment__card--create">
@@ -38,7 +38,7 @@ const Form = (props) => {
         </section>
       </section>
     </main>
-  )
+  );
 
 }
 

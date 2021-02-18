@@ -12,9 +12,7 @@ const CREATE = "CREATE";
 
 export default function Appointment(props) {
 
-  const { mode, transition, back } = useVisualMode(
-    props.interview ? SHOW : EMPTY
-  );
+  const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
 
   return (
     <article className="appointment">
