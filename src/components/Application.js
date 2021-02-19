@@ -41,13 +41,13 @@ export default function Application(props) {
       [id]: appointment
     };
 
-    return axios.put(`/api/appointments/${id}`, {
+    return axios
+      .put(`/api/appointments/${id}`, {
         id,
         time: appointment.time,
         interview
       })
-      .then((response) => {
-        console.log(response)
+      .then(() => {
         setState({ ...state, appointments });
       });
 
@@ -64,13 +64,13 @@ export default function Application(props) {
       [id]: appointment
     };
 
-    return axios.delete(`/api/appointments/${id}`, {
-      interview: null
-    })
-    .then((response) => {
-      console.log(response)
-      setState({ ...state, appointments });
-    });
+    return axios
+      .delete(`/api/appointments/${id}`, {
+        interview: null
+      })
+      .then(() => {
+        setState({ ...state, appointments });
+      });
 
   }
 

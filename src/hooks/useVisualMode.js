@@ -8,9 +8,9 @@ export default function useVisualMode(initial) {
     setMode(newMode);
     if (replace) {
       history[history.length - 1] = newMode;
-      setHistory(history);
+      setHistory(() => history);
     } else {
-      setHistory([...history, newMode]);
+      setHistory(prev => ([...prev, newMode]));
     }
   };
 
@@ -18,7 +18,7 @@ export default function useVisualMode(initial) {
     if (history.length > 1) {
       setMode(history[history.length - 2]);
       history.pop();
-      setHistory(history);
+      setHistory(() => history);
     }
   };
 
