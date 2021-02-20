@@ -6,6 +6,7 @@ export default function useApplicationData() {
   const SET_DAY = "SET_DAY";
   const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
   const SET_INTERVIEW = "SET_INTERVIEW";
+  const SET_SPOTS = "SET_SPOTS";
   
   function reducer(state, action) {
     switch (action.type) {
@@ -23,6 +24,9 @@ export default function useApplicationData() {
           [action.id]: appointment
         };
         return { ...state, appointments };
+      }
+      case SET_SPOTS: {
+        return { ...state, days: action.days }
       }
       default:
         throw new Error(
@@ -57,7 +61,7 @@ export default function useApplicationData() {
         time: state.appointments[id].time,
         interview
       })
-      .then(() => updateSpots(id, -1))
+      .then(() => setSpots(id, -1))
       .then(() => {
         dispatch({ type: SET_INTERVIEW, id, interview });
       });
@@ -68,13 +72,13 @@ export default function useApplicationData() {
       .delete(`/api/appointments/${id}`, {
         interview: null
       })
-      .then(() => updateSpots(id, 1))
+      .then(() => setSpots(id, 1))
       .then(() => {
         dispatch({ type: SET_INTERVIEW, id, interview: null });
       });
   };
 
-  function updateSpots(appointmentID, increment) {
+  function setSpots(appointmentID, increment) {
     let newSpots;
     let dayObject;
     let daysArray = [...state.days];
@@ -83,7 +87,7 @@ export default function useApplicationData() {
         newSpots = day.spots + increment;
         dayObject = { ...day, spots: newSpots };
         daysArray[index] = dayObject;
-        day.spots = newSpots;
+        dispatch({ type: SET_SPOTS, days: daysArray });
       }
     }
     // axios
