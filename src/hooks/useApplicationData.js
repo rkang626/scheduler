@@ -90,10 +90,6 @@ export default function useApplicationData() {
         dispatch({ type: SET_SPOTS, days: daysArray });
       }
     }
-    // axios
-    //   .put(`/api/days/${dayObject.id}`, {
-    //     dayObject
-    //   })
 
     return daysArray;
   }
