@@ -67,6 +67,19 @@ export default function useApplicationData() {
       });
   };
 
+  function editInterview(id, interview) {
+    return axios
+      .put(`/api/appointments/${id}`, {
+        id,
+        time: state.appointments[id].time,
+        interview
+      })
+      .then(() => setSpots(id, 0))
+      .then(() => {
+        dispatch({ type: SET_INTERVIEW, id, interview });
+      });
+  };
+
   function deleteInterview(id) {
     return axios
       .delete(`/api/appointments/${id}`, {
@@ -98,6 +111,7 @@ export default function useApplicationData() {
     state,
     setDay,
     bookInterview,
+    editInterview,
     deleteInterview
   };
 
