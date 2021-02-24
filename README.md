@@ -1,5 +1,11 @@
 # Interview Scheduler
 
+Interview Scheduler is a modern client application using the React view library that allows users to schedule interviews.
+
+This was a project built as part of the awesome Web Development bootcamp offered by [Lighthouse Labs](https://www.lighthouselabs.ca/).
+
+!["Lighthouse Logo"](https://github.com/rkang626/tweeter/blob/master/docs/lhl_logo.jpg)
+
 ## Setup
 
 Install dependencies with `npm install`.
