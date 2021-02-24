@@ -4,7 +4,7 @@ Interview Scheduler is a modern client application using the React view library 
 
 This was a project built as part of the awesome Web Development bootcamp offered by [Lighthouse Labs](https://www.lighthouselabs.ca/).
 
-!["Lighthouse Logo"](https://github.com/rkang626/tweeter/blob/master/docs/lhl_logo.jpg)
+!["Lighthouse Logo"](https://github.com/rkang626/scheduler/blob/master/docs/lhl_logo.jpg)
 
 ## Setup
 
@@ -36,3 +36,9 @@ npm run storybook
   - DayListItem and DayList
   - InterviewerListItem and InterviewerList
   - Appointment views
+
+#### Main Scheduling Page:
+!["Main Page"](https://github.com/rkang626/scheduler/blob/master/docs/main_page.png)
+
+#### Booking an Interview:
+!["Book Interview"](https://github.com/rkang626/scheduler/blob/master/docs/book_interview.png)
