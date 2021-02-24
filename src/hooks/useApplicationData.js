@@ -5,6 +5,16 @@ import axios from "axios";
 
 export default function useApplicationData() {
 
+  useEffect(() => {
+    let ws = new WebSocket("ws://localhost:8001");
+    ws.onopen = function () {
+      ws.send("ping");
+    };
+    ws.onmessage = function (event) {
+      console.log(`Message Received: ${event.data}`);
+    }
+  }, []);
+
   const SET_DAY = "SET_DAY";
   const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
   const SET_INTERVIEW = "SET_INTERVIEW";
