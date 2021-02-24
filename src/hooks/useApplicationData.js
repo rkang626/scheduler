@@ -5,16 +5,6 @@ import axios from "axios";
 
 export default function useApplicationData() {
 
-  useEffect(() => {
-    let ws = new WebSocket("ws://localhost:8001");
-    ws.onopen = function () {
-      ws.send("ping");
-    };
-    ws.onmessage = function (event) {
-      console.log(`Message Received: ${event.data}`);
-    }
-  }, []);
-
   const SET_DAY = "SET_DAY";
   const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
   const SET_INTERVIEW = "SET_INTERVIEW";
@@ -65,6 +55,21 @@ export default function useApplicationData() {
       dispatch({ type: SET_APPLICATION_DATA, days: all[0].data, appointments: all[1].data, interviewers: all[2].data });
     })
   }, []);
+
+  // useEffect(() => {
+  //   let ws = new WebSocket("ws://localhost:8001");
+  //   ws.onopen = function () {
+  //     ws.send("ping");
+  //   };
+  //   ws.onmessage = function (event) {
+  //     console.log(`Message Received: ${event.data}`);
+  //     const type = JSON.parse(event.data).type;
+  //     const id = JSON.parse(event.data).id;
+  //     const interview = JSON.parse(event.data).interview;
+  //     dispatch({ type, id, interview });
+  //   };
+  //   return ws.close();
+  // }, []);
 
   const setDay = day => dispatch({ type: SET_DAY, day });
 
