@@ -1,7 +1,8 @@
 import React from "react";
 import "components/Button.scss";
-
 const classNames = require('classnames');
+
+// React component for the various button types used in the app.
 
 export default function Button(props) {
    const buttonClass =  classNames("button", { 
@@ -18,4 +19,4 @@ export default function Button(props) {
       {props.children}
     </button>
   );
- }
+};

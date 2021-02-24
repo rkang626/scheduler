@@ -3,6 +3,8 @@ import InterviwerListItem from '../components/InterviewerListItem';
 import "components/InterviewerList.scss";
 import PropTypes from 'prop-types';
 
+// Function that generates the InterviewerList JSX from InterviewerListItem components.
+
 function CreateInterviwerList(props) {
   const interviewers = props.interviewers.map(interviewer => {
     return (
@@ -17,7 +19,9 @@ function CreateInterviwerList(props) {
   });
 
   return interviewers;
-}
+};
+
+// React component that contains InterviewerListItems.
 
 function InterviewerList(props) {
 

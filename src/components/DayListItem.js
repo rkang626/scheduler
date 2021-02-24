@@ -1,7 +1,8 @@
 import React from "react";
 import "components/DayListItem.scss";
-
 const classNames = require('classnames');
+
+// Function to format the text that shows how many spots are remaining.
 
 const formatSpots = function(spots) {
   if (spots === 0) {
@@ -11,7 +12,9 @@ const formatSpots = function(spots) {
   } else {
     return spots + " spots remaining";
   }
-}
+};
+
+// React component for DayListItem.
 
 export default function DayListItem(props) {
   const dayClass =  classNames("day-list__item", { 
@@ -25,4 +28,4 @@ export default function DayListItem(props) {
       <h3 className="text--light">{formatSpots(props.spots)}</h3>
     </li>
   );
-}
+};

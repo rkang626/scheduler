@@ -1,13 +1,16 @@
 import { useReducer, useEffect } from "react";
 import axios from "axios";
 
+// Handles everything related to updating the state and server data.
+
 export default function useApplicationData() {
 
   const SET_DAY = "SET_DAY";
   const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
   const SET_INTERVIEW = "SET_INTERVIEW";
   const SET_SPOTS = "SET_SPOTS";
-  
+
+  // Set up the reducer.
   function reducer(state, action) {
     switch (action.type) {
       case SET_DAY:
@@ -26,14 +29,15 @@ export default function useApplicationData() {
         return { ...state, appointments };
       }
       case SET_SPOTS: {
-        return { ...state, days: action.days }
+        return { ...state, days: action.days };
       }
       default:
         throw new Error(
           `Tried to reduce with unsupported action type: ${action.type}`
         );
-    }
-  }
+    };
+
+  };
 
   const [state, dispatch] = useReducer(reducer, {
     day: "Monday",
@@ -50,10 +54,11 @@ export default function useApplicationData() {
     ]).then((all) => {
       dispatch({ type: SET_APPLICATION_DATA, days: all[0].data, appointments: all[1].data, interviewers: all[2].data });
     })
-  }, [])
+  }, []);
 
   const setDay = day => dispatch({ type: SET_DAY, day });
 
+  // Update data when a new interview is booked.
   function bookInterview(id, interview) {
     return axios
       .put(`/api/appointments/${id}`, {
@@ -67,6 +72,7 @@ export default function useApplicationData() {
       });
   };
 
+  // Update data when an existing interview is edited.
   function editInterview(id, interview) {
     return axios
       .put(`/api/appointments/${id}`, {
@@ -80,6 +86,7 @@ export default function useApplicationData() {
       });
   };
 
+  // Update data when an existing interview is deleted.
   function deleteInterview(id) {
     return axios
       .delete(`/api/appointments/${id}`, {
@@ -91,6 +98,7 @@ export default function useApplicationData() {
       });
   };
 
+  // Update the number of spots available for a day.
   function setSpots(appointmentID, increment) {
     let newSpots;
     let dayObject;
@@ -105,7 +113,7 @@ export default function useApplicationData() {
     }
 
     return daysArray;
-  }
+  };
 
   return {
     state,
@@ -115,4 +123,4 @@ export default function useApplicationData() {
     deleteInterview
   };
 
-}
+};

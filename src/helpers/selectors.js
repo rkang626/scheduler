@@ -1,3 +1,5 @@
+// Contains helper functions used by the main application.
+
 export function getAppointmentsForDay(state, day) {
 
   const output = [];
@@ -45,4 +47,4 @@ export function getInterview(state, interview) {
   }
   return null;
 
-}
+};

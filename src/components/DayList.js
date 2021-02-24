@@ -1,6 +1,8 @@
 import React from "react";
 import DayListItem from '../components/DayListItem';
 
+// Function that generates the DayList JSX from DayListItem components.
+
 function CreateDayList(props) {
   const days = props.days.map(day => {
     return (
@@ -15,7 +17,9 @@ function CreateDayList(props) {
   });
 
   return days;
-}
+};
+
+// React component that contains DayListItems.
 
 export default function DayList(props) {
   return (
@@ -23,4 +27,4 @@ export default function DayList(props) {
       {CreateDayList(props)}
     </ul>
   );
-}
+};

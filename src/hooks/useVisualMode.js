@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+// Helps manage how we transition from one Appointment mode to another.
+
 export default function useVisualMode(initial) {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
@@ -27,4 +29,4 @@ export default function useVisualMode(initial) {
     transition,
     back
   };
-}
+};

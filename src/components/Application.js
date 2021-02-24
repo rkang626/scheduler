@@ -7,6 +7,8 @@ import { getInterviewersForDay } from "../helpers/selectors";
 import { getInterview } from "../helpers/selectors";
 import useApplicationData from "../hooks/useApplicationData";
 
+// React component for the main application.
+
 export default function Application(props) {
 
   const {
@@ -65,4 +67,4 @@ export default function Application(props) {
     </main>
   );
   
-}
+};

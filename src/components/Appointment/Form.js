@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import InterviewerList from "../InterviewerList";
 import Button from "../Button";
 
+// React component for creating or editing an appointment.
+
 const Form = (props) => {
 
   const [name, setName] = useState(props.name || "");
@@ -53,6 +55,6 @@ const Form = (props) => {
     </main>
   );
 
-}
+};
 
 export default Form;
