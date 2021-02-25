@@ -56,20 +56,22 @@ export default function useApplicationData() {
     })
   }, []);
 
-  // useEffect(() => {
-  //   let ws = new WebSocket("ws://localhost:8001");
-  //   ws.onopen = function () {
-  //     ws.send("ping");
-  //   };
-  //   ws.onmessage = function (event) {
-  //     console.log(`Message Received: ${event.data}`);
-  //     const type = JSON.parse(event.data).type;
-  //     const id = JSON.parse(event.data).id;
-  //     const interview = JSON.parse(event.data).interview;
-  //     dispatch({ type, id, interview });
-  //   };
-  //   return ws.close();
-  // }, []);
+  useEffect(() => {
+    let ws = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
+    ws.onopen = function () {
+      ws.send("ping");
+    };
+    ws.onmessage = event => {
+      console.log(`Message Received: ${event.data}`);
+      const type = JSON.parse(event.data).type;
+      const id = JSON.parse(event.data).id;
+      const interview = JSON.parse(event.data).interview;
+      dispatch({ type, id, interview });
+    };
+    return () => {
+      ws.close();
+  };
+  }, []);
 
   const setDay = day => dispatch({ type: SET_DAY, day });
 
